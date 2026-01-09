@@ -2,145 +2,181 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Para mi amada Elieen</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital@1&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --romantic-pink: #f8bbd0;
-            --gold: #d4af37;
+            --deep-pink: #ad1457;
             --dark-text: #4a4a4a;
         }
 
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
+        }
+
+        body {
             font-family: 'Poppins', sans-serif;
             background-color: #fffafb;
             color: var(--dark-text);
             overflow-x: hidden;
+            width: 100%;
         }
 
         h1, h2, h3 {
             font-family: 'Dancing Script', cursive;
-            color: #ad1457;
+            color: var(--deep-pink);
+            line-height: 1.2;
         }
 
         section {
-            height: 100vh;
+            min-height: 100vh;
+            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
+            padding: 40px 20px;
+            position: relative;
         }
 
+        /* --- SECCIÓN HERO --- */
         .hero {
-            background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), 
+            background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)), 
                         url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=80&w=1000');
             background-size: cover;
+            background-position: center;
         }
 
+        .hero h1 { font-size: 2.5rem; margin-bottom: 15px; }
+        .hero p { font-size: 1.1rem; opacity: 0.8; }
+
+        /* --- SECCIÓN HISTORIA --- */
+        .story h2 { font-size: 2.2rem; margin-bottom: 20px; }
+        .story p { font-size: 1rem; max-width: 300px; margin-bottom: 30px; }
+
+        .photo-placeholder img {
+            width: 280px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 5px solid white;
+        }
+
+        /* --- SECCIÓN PROPUESTA (EL FIX) --- */
         .proposal {
-            position: relative; /* Necesario para capas */
-            height: 100vh;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            color: white;
             overflow: hidden;
-            color: white; /* Forzamos texto blanco para contraste */
         }
 
-        /* La foto de fondo con filtro de oscuridad */
         .background-image {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('TU_FOTO_AQUI.jpg'); /* Pon aquí el nombre de tu archivo */
+            background-image: url('../Zoe.jpg'); /* Tu foto principal */
             background-size: cover;
             background-position: center;
-            filter: brightness(0.6); /* Esto oscurece la foto automáticamente */
+            filter: brightness(0.5);
             z-index: 1;
         }
 
-        /* El contenido por encima de la foto */
         .content-overlay {
             position: relative;
-            z-index: 2; /* Asegura que el texto esté arriba */
-            text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.2); /* Refuerzo de legibilidad */
-            border-radius: 20px;
-            backdrop-filter: blur(3px); /* Efecto de vidrio esmerilado muy moderno */
+            z-index: 2;
+            width: 90%;
+            max-width: 400px;
+            padding: 30px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
 
-        /* Mejoramos el texto para que no se pierda */
-        .proposal h2, .proposal h3 {
-            color: #ffffff; 
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8); /* Sombra al texto */
-            margin-bottom: 20px;
-        }
+        .proposal h2 { color: white; font-size: 2.4rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .proposal h3 { color: #f8bbd0; font-size: 1.8rem; margin-bottom: 30px; }
 
-        /* Ajuste de botones para que no se bajen demasiado */
+        /* --- BOTONES --- */
         .buttons {
-            margin-top: 30px;
             display: flex;
-            justify-content: center;
+            flex-direction: column; /* Apilados en móvil para mejor click */
+            align-items: center;
             gap: 15px;
+            width: 100%;
         }
 
         .buttons button {
-            padding: 15px 30px;
-            font-size: 1.2rem;
+            width: 80%;
+            max-width: 250px;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            transition: 0.3s;
-            margin: 10px;
+            transition: transform 0.2s;
+            font-family: 'Poppins', sans-serif;
         }
 
         #yesBtn {
-            background-color: #ad1457;
+            background-color: var(--deep-pink);
             color: white;
-            box-shadow: 0 4px 15px rgba(173, 20, 87, 0.4);
+            box-shadow: 0 8px 20px rgba(173, 20, 87, 0.4);
         }
 
         #noBtn {
-            background-color: #eee;
+            background-color: rgba(255, 255, 255, 0.9);
             color: #888;
+            position: relative; /* Importante para el movimiento JS */
         }
+
+        .heart-container { font-size: 3rem; margin-bottom: 10px; animation: heartbeat 1.2s infinite; }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .scroll-down { margin-top: 20px; animation: bounce 2s infinite; font-size: 1.5rem; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
     </style>
 </head>
 <body>
 
     <section class="hero">
-        <div class="hero-content">
-            <h1 class="fade-in">Hola, Elieen Zoe Castillo...</h1>
-            <p class="fade-in-delayed">Tengo algo importante que decirte.</p>
+        <div class="hero-content" data-aos="fade-down">
+            <h1>Hola, Elieen Zoe Castillo...</h1>
+            <p>Tengo algo importante que decirte.</p>
             <div class="scroll-down">↓</div>
         </div>
     </section>
 
     <section class="story">
         <div data-aos="fade-up">
-            <h2>Desde que llegaste a mi vida...</h2>
-            <p>Cada día a tu lado ha sido un código perfecto, sin errores, lleno de luz.</p>
+            <h2>Desde que llegaste...</h2>
+            <p>Cada día a tu lado ha sido un código perfecto, lleno de luz y felicidad.</p>
         </div>
-        
         <div class="photo-placeholder" data-aos="zoom-in">
-            <span><img src="../Zoe.jpg" alt=""></span>
+            <img src="../Zoe.jpg" alt="Zoe">
         </div>
     </section>
 
     <section class="proposal">
-        <div class="background-image"></div> <div class="content-overlay">
+        <div class="background-image"></div>
+        <div class="content-overlay" data-aos="zoom-out-up">
             <div class="heart-container">❤️</div>
-            <h2 data-aos="fade-up">Elieen Zoe Castillo</h2>
-            <h3 data-aos="fade-up" data-aos-delay="300">¿Te casarías conmigo?</h3>
+            <h2>Elieen Zoe Castillo</h2>
+            <h3>¿Te casarías conmigo?</h3>
             
             <div class="buttons">
                 <button id="yesBtn">¡SÍ! Mil veces sí</button>
@@ -151,29 +187,35 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inicializar animaciones de scroll
-        AOS.init({ duration: 1500 });
+        AOS.init({ duration: 1000, once: true });
 
         const noBtn = document.getElementById('noBtn');
         const yesBtn = document.getElementById('yesBtn');
 
-        // Hacer que el botón "No" escape (un toque divertido)
-        noBtn.addEventListener('mouseover', () => {
-            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-            noBtn.style.position = 'absolute';
+        // Función mejorada para mover el botón en móviles sin que se salga de la pantalla
+        const moverBotonNo = () => {
+            const width = window.innerWidth - 150;
+            const height = window.innerHeight - 100;
+            const x = Math.random() * width;
+            const y = Math.random() * height;
+            
+            noBtn.style.position = 'fixed'; // Fixed para que se mueva por toda la pantalla
             noBtn.style.left = `${x}px`;
             noBtn.style.top = `${y}px`;
+            noBtn.style.zIndex = "999";
+        };
+
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // Evita que el click funcione en móviles
+            moverBotonNo();
         });
 
-        // Celebración al decir que sí
+        noBtn.addEventListener('mouseover', moverBotonNo);
+
         yesBtn.addEventListener('click', () => {
             alert('¡Eres la persona más feliz del mundo! ❤️ Prepárate para una vida juntos, Mi tomatico.');
-            // Aquí puedes redirigir a un video de YouTube con "su canción"
-            // window.location.href = "https://www.youtube.com/watch?v=tu_link_aqui";
+            // Aquí puedes poner confeti o redirigir
         });
     </script>
 </body>
-
 </html>
-
